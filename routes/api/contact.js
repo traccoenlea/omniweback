@@ -1,8 +1,29 @@
 const router = require("express").Router();
 const nodemailer = require("nodemailer");
 
+router.post("/addContactToDb", async (req, res) => {
+  const email = req.body[0].email;
+  const name = req.body[0].name;
+  const surname = req.body[0].surname;
+  const message = req.body[0].message;
+  const date = req.body[0].date;
+
+  //   console.log(email, name, surname, message, date);
+  try {
+    const sql = `INSERT INTO contact (email, name, surname, message, date) VALUES(?,?,?,?,?)`;
+
+    const values = [email, name, surname, message, date];
+
+    connection.query(sql, values, (err, result) => {
+      if (err) throw err;
+      res.send(true);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 router.post("/", async (req, res) => {
-  console.log("coucou le back");
   try {
     const email = req.body[0].email;
     const name = req.body[0].name;
