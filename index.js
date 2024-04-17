@@ -1,4 +1,4 @@
-const connection = require("./database");
+// const connection = require("./database");
 const bodyParser = require("body-parser");
 
 const express = require("express");
