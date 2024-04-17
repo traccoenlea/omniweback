@@ -17,8 +17,9 @@ const server = http.createServer(app);
 
 const cors = require("cors");
 const { error, log } = require("console");
-const port = 8000;
+// const port = 8000;
 // const port = 3306;
+const port = 5000;
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -47,7 +48,7 @@ app.use("*", (req, res) => {
 
 // on écoute sur le port 8000
 // app.listen(8000);
-app.listen(port);
+app.listen(port, console.log(`Server started on PORT ${port}`));
 
 connection.connect((err) => {
   if (err) throw err;
