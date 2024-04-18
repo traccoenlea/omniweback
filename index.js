@@ -18,8 +18,8 @@ const server = http.createServer(app);
 const cors = require("cors");
 const { error, log } = require("console");
 // const port = 8000;
-// const port = 3306;
-const port = 8000;
+const port = 3306;
+// const port = 5000;
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -50,10 +50,10 @@ app.use("*", (req, res) => {
 // app.listen(8000);
 app.listen(port, console.log(`Server started on PORT ${port}`));
 
-// connection.connect((err) => {
-//   if (err) throw err;
-//   console.log("Connecté à la base de données MySQL, écoutant le port " + port);
-// });
+connection.connect((err) => {
+  if (err) throw err;
+  console.log("Connecté à la base de données MySQL, écoutant le port " + port);
+});
 
 // app.get("/", (_, res) => {
 //   res.send(JSON.stringify("API WORKING"));
