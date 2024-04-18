@@ -18,7 +18,7 @@ const server = http.createServer(app);
 const cors = require("cors");
 const { error, log } = require("console");
 // const port = 8000;
-const port = 8000;
+const port = 3306;
 // const port = 5000;
 
 app.use((req, res, next) => {
