@@ -58,6 +58,8 @@ connection.connect((err) => {
   console.log("Connecté à la base de données MySQL, écoutant le port " + port);
 });
 
+app.timeout = 0;
+
 // app.get("/", (_, res) => {
 //   res.send(JSON.stringify("API WORKING"));
 // });
