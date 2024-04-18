@@ -1,4 +1,4 @@
-// const connection = require("./database");
+const connection = require("./database");
 const bodyParser = require("body-parser");
 
 const express = require("express");
@@ -18,7 +18,7 @@ const server = http.createServer(app);
 const cors = require("cors");
 const { error, log } = require("console");
 // const port = 8000;
-const port = 3306;
+const port = 8000;
 // const port = 5000;
 
 app.use((req, res, next) => {
@@ -48,10 +48,13 @@ app.use("*", (req, res) => {
 
 // on écoute sur le port 8000
 // app.listen(8000);
-app.listen(port, console.log(`Server started on PORT ${port}`));
+app.listen(port, () => console.log(`Server started on PORT ${port}`));
 
 connection.connect((err) => {
-  if (err) throw err;
+  if (err) {
+    console.error("Erreur de connexion à la base de données : " + err.stack);
+    return;
+  }
   console.log("Connecté à la base de données MySQL, écoutant le port " + port);
 });
 
